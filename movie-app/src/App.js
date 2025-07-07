@@ -6,6 +6,7 @@ import About from './components/About';
 import SearchView from './components/SearchView';
 import MovieView from './components/MovieView';
 import {Routes, Route} from 'react-router-dom';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
         <Route path="/search" element={<SearchView keyword={searchText} searchResults={searchResults} />} />
 
         <Route path ="/movie/:id" element={<MovieView />} /> {/* Jika path/alamat/endpoint nya /movie/:id maka itu adalah movie view dan berubah ke laman movie view, :id adalah parameter yang akan diambil dari URL */}
+
+        {/* If the page doesn't exist */}
+        <Route path='*' element={<NotFound />} />
 
       </Routes>
     </div>
