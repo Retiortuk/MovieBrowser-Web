@@ -33,7 +33,6 @@ const MovieView = () => {
             const backdropURL = `https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`; // URL untuk backdrop film
             return (
                 <div>
-                    {/* TODO: ADD BACKDROP IN HERO */}
                     <Hero text={movieDetails.original_title} backdrop={backdropURL} /> {/* Menampilkan judul film sebagai teks Hero */}
                     <div className="container">
 

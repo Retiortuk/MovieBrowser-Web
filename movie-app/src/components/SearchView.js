@@ -11,7 +11,13 @@ const MovieCard = ({ movie }) => {
     return (
         <div className= "col-lg-3 col-md-3 col-2 my-3">
             <div className="card">
-                <img src={posterURL} className="card-img-top" alt="..." />
+                {movie.poster_path ? (
+                    <img src={posterURL} className="card-img-top" alt="..." />
+                ): (
+                    <div className="image-placeholder d-flex align-items-center justify-content-center bg-light text-muted rounded" style={{height: '450px'}}>
+                        <p className="fw-bold">Image Not Available For This One </p>
+                    </div>
+                )}
                 <div className="card-body">
                     <h5 className="card-title">{movie.original_title}</h5>
                     <Link to={detailURL} className="btn btn-dark">Show Details</Link> {/* Menggunakan Link untuk navigasi ke detail film */}
