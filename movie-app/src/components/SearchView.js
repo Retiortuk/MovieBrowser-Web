@@ -29,30 +29,60 @@ const MovieCard = ({ movie }) => {
 
 // SearchView.js
 const SearchView = ({keyword, searchResults}) => { // Menerima props keyword dan searchResults dari App.js
+    
+    // no searchResults Handler
+    const noResultsHandler = searchResults.length === 0 && keyword !== '';
+
     // keyword adalah teks yang dicari, searchResults adalah hasil pencarian
-    const title = `you search for ${keyword}`; // Judul yang akan ditampilkan di Hero, bisa diubah sesuai kebutuhan
+    const title = noResultsHandler
+        ? `can't find '${keyword}'` // IF TRUE
+        : `you search for ${keyword}` // IF FALSE
 
     const ResultsHTML = searchResults.map((obj, index) => { // Menggunakan map untuk mengiterasi setiap hasil pencarian
         // obj adalah setiap objek film dari hasil pencarian, index adalah indeksnya
-
         return (
             <MovieCard movie={obj} key={index} />  
-
+            
         )
-    }) 
+    });
+
+    // no results handler
+    // const noResultsHandler = ResultsHTML.length === 0 && keyword !== ''
+    //     ? // IF TRUE:
+    //         <>
+    //             <Hero text={titleNotFound} />
+    //                 <div className="container min-vh-100 d-flex justify-content-center" style={{paddingTop: '30vh'}}>
+    //                     <div className="text-center">
+    //                         <h1 className="fw-bold fs-1">No Movie Available 404 :(</h1>
+    //                         <p className="lead mt-3">Oops Soory, Can't Find '{keyword}' :(</p>
+    //                     </div>
+    //                 </div>
+    //         </>
+    //     : // IF FALSE:
+    //         null;
 
     return (
         <>
             {/* Menampilkan Hero dengan teks yang sesuai */}
-            <Hero text={title} /> {/*text berupa seperti nama class yang bisa dipanggil di Hero.js  */}
-            { ResultsHTML && 
+            <Hero text={title} /> 
+            {/*text berupa seperti nama class yang bisa dipanggil di Hero.js  */}
                 <div className="container">
                     <div className="row">
                         {/* Menampilkan hasil pencarian */}
-                        {ResultsHTML } 
+                        {noResultsHandler ? (
+                        // IF TRUE:
+                                <div className="container min-vh-100 d-flex justify-content-center" style={{paddingTop: '30vh'}}>
+                                    <div className="text-center">
+                                        <h1 className="fw-bold fs-1">No Movie Available 404 :(</h1>
+                                        <p className="lead mt-3">Oops Soory, Can't Find '{keyword}' :(</p>
+                                    </div>
+                                </div>
+                        ) : (
+                        // IF FALSE:
+                            ResultsHTML
+                        )}
                     </div>
                 </div>
-            }
         </>
     );
 };
