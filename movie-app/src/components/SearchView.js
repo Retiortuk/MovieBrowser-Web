@@ -46,21 +46,6 @@ const SearchView = ({keyword, searchResults}) => { // Menerima props keyword dan
         )
     });
 
-    // no results handler
-    // const noResultsHandler = ResultsHTML.length === 0 && keyword !== ''
-    //     ? // IF TRUE:
-    //         <>
-    //             <Hero text={titleNotFound} />
-    //                 <div className="container min-vh-100 d-flex justify-content-center" style={{paddingTop: '30vh'}}>
-    //                     <div className="text-center">
-    //                         <h1 className="fw-bold fs-1">No Movie Available 404 :(</h1>
-    //                         <p className="lead mt-3">Oops Soory, Can't Find '{keyword}' :(</p>
-    //                     </div>
-    //                 </div>
-    //         </>
-    //     : // IF FALSE:
-    //         null;
-
     return (
         <>
             {/* Menampilkan Hero dengan teks yang sesuai */}
